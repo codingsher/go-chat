@@ -64,7 +64,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        socket = new WebSocket("ws://0.0.0.0:3000/ws");
+        socket = new WebSocket("wss://0.0.0.0:3000/ws");
 
         socket.onopen = () => {
             console.log("Successfully connected");
