@@ -19,15 +19,17 @@ func main() {
 	router.HandleFunc("GET /", handlers.Home())
 	router.HandleFunc("GET /ws", handlers.WsEndpoint())
 
+	PORT := "3000"
+
 	server := http.Server{
-		Addr:    "localhost:8080",
+		Addr:    "0.0.0.0:" + PORT,
 		Handler: router,
 	}
 
 	log.Println("Starting Channel listener")
 	go handlers.ListenToWs()
 
-	slog.Info("starting server", slog.String("address", "localhost:8080"), slog.String("env", "dev"), slog.String("version", "1.0.0"))
+	slog.Info("starting server", slog.String("address", "0.0.0.0:"+PORT), slog.String("env", "dev"), slog.String("version", "1.0.0"))
 	done := make(chan os.Signal, 1)
 	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 	go func() {
