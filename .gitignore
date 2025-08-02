@@ -1,0 +1,8 @@
+/config
+/bin
+*.sum
+*.env
+*.yaml
+*.exe
+*.bin
+Readme.md
