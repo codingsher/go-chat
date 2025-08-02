@@ -64,7 +64,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        socket = new WebSocket("wss://0.0.0.0:3000/ws");
+        const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        const host = window.location.host; // adapts to Railway domain or localhost
+        socket = new WebSocket(`${protocol}://${host}/ws`);
+
 
         socket.onopen = () => {
             console.log("Successfully connected");

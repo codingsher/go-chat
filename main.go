@@ -22,14 +22,14 @@ func main() {
 	PORT := "3000"
 
 	server := http.Server{
-		Addr:    "0.0.0.0:" + PORT,
+		Addr:    ":" + PORT,
 		Handler: router,
 	}
 
 	log.Println("Starting Channel listener")
 	go handlers.ListenToWs()
 
-	slog.Info("starting server", slog.String("address", "0.0.0.0:"+PORT), slog.String("env", "dev"), slog.String("version", "1.0.0"))
+	slog.Info("starting server", slog.String("address", ":"+PORT), slog.String("env", "dev"), slog.String("version", "1.0.0"))
 	done := make(chan os.Signal, 1)
 	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 	go func() {
