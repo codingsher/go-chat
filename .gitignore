@@ -1,5 +1,4 @@
 /bin
-*.sum
 *.env
 *.yaml
 *.exe
